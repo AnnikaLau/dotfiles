@@ -128,9 +128,9 @@ elif [[ "${BASHRC_HOST}" == "dom" ]]; then
 elif [[ "${BASHRC_HOST}" == "euler" ]]; then
     alias srcspack="source $SPACK_ROOT/share/spack/setup-env.sh"
     alias spak="spack  --config-scope=${HOME}/.spack/$BASHRC_HOST"
-    alias sc='cd /cluster/scratch/juckerj/'
+    alias sc='cd /cluster/scratch/alauber/'
     alias aall="bkill 0"
-    alias hh='cd /cluster/home/juckerj/'
+    alias hh='cd /cluster/home/alauber/'
     alias sq='bjobs'
     alias squ='bbjobs'
 
