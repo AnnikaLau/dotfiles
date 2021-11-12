@@ -52,14 +52,14 @@ if [[ "${BASHRC_HOST}" == "tsa" ]]; then
 
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('/users/juckerj/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    __conda_setup="$('/users/alauber/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
     if [ $? -eq 0 ]; then
         eval "$__conda_setup"
     else
-        if [ -f "/users/juckerj/miniconda3/etc/profile.d/conda.sh" ]; then
-            . "/users/juckerj/miniconda3/etc/profile.d/conda.sh"
+        if [ -f "/users/alauber/miniconda3/etc/profile.d/conda.sh" ]; then
+            . "/users/alauber/miniconda3/etc/profile.d/conda.sh"
         else
-            export PATH="/users/juckerj/miniconda3/bin:$PATH"
+            export PATH="/users/alauber/miniconda3/bin:$PATH"
         fi
     fi
     unset __conda_setup
@@ -68,7 +68,7 @@ if [[ "${BASHRC_HOST}" == "tsa" ]]; then
 # daint
 elif [[ "${BASHRC_HOST}" == "daint" ]]; then
     . /etc/bash_completion.d/git.sh
-    export PATH=$PATH:/users/juckerj/script_utils
+    export PATH=$PATH:/users/alauber/script_utils
     test -s ~/.profile && . ~/.profile || true
 
 # dom
@@ -97,32 +97,32 @@ esac
 if [[ "${BASHRC_HOST}" == "tsa" ]]; then
     alias srcspack="source $SPACK_ROOT/share/spack/setup-env.sh"
     alias spak="spack  --config-scope=${HOME}/.spack/$BASHRC_HOST"
-    alias sc='cd /scratch/juckerj/'
-    alias aall="scancel -u juckerj"
-    alias sq='squeue -u juckerj'
+    alias sc='cd /scratch/alauber/'
+    alias aall="scancel -u alauber"
+    alias sq='squeue -u alauber'
     alias squ='squeue'
-    alias hh='cd /users/juckerj/'
+    alias hh='cd /users/alauber/'
 
 # daint
 elif [[ "${BASHRC_HOST}" == "daint" ]]; then
     alias srcspack="source $SPACK_ROOT/share/spack/setup-env.sh"
     alias spak="spack  --config-scope=${HOME}/.spack/$BASHRC_HOST"
-    alias sc='cd /scratch/snx3000/juckerj/'
-    alias aall="scancel -u juckerj"
-    alias sq='squeue -u juckerj'
+    alias sc='cd /scratch/snx3000/alauber/'
+    alias aall="scancel -u alauber"
+    alias sq='squeue -u alauber'
     alias squ='squeue'
-    alias hh='cd /users/juckerj/'
+    alias hh='cd /users/alauber/'
     alias jenkins='cd /scratch/snx3000/jenkins/workspace'
 
 # dom
 elif [[ "${BASHRC_HOST}" == "dom" ]]; then
     alias srcspack="source $SPACK_ROOT/share/spack/setup-env.sh"
     alias spak="spack  --config-scope=${HOME}/.spack/$BASHRC_HOST"
-    alias sc='cd /scratch/snx3000tds/juckerj/'
-    alias aall="scancel -u juckerj"
-    alias sq='squeue -u juckerj'
+    alias sc='cd /scratch/snx3000tds/alauber/'
+    alias aall="scancel -u alauber"
+    alias sq='squeue -u alauber'
     alias squ='squeue'
-    alias hh='cd /users/juckerj/'
+    alias hh='cd /users/alauber/'
 
 # euler
 elif [[ "${BASHRC_HOST}" == "euler" ]]; then
