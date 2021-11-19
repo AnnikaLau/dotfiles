@@ -113,7 +113,7 @@ elif [[ "${BASHRC_HOST}" == "daint" ]]; then
     alias squ='squeue'
     alias hh='cd /users/alauber/'
     alias jenkins='cd /scratch/snx3000/jenkins/workspace'
-
+    alias lsa='ml daint-gpu && ml PyExtensions && ml cray-python PyExtensions python_virtualenv'
 # dom
 elif [[ "${BASHRC_HOST}" == "dom" ]]; then
     alias srcspack="source $SPACK_ROOT/share/spack/setup-env.sh"
@@ -179,3 +179,5 @@ alias gsui='git submodule update --init'
 alias ncd='ncdump -h'
 alias ncw='ncview'
 alias fp='find "$PWD" -name'
+alias ipython='python -m IPython'
+
