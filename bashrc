@@ -133,6 +133,7 @@ elif [[ "${BASHRC_HOST}" == "euler" ]]; then
     alias hh='cd /cluster/home/alauber/'
     alias sq='bjobs'
     alias squ='bbjobs'
+    alias lsa='sc && source icon/modules.env && source scaling_analysis/myenv/bin/activate && ml python && cd -'  
 
 # mistral
 elif [[ "${BASHRC_HOST}" == "mistral" ]]; then
