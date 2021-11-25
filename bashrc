@@ -114,6 +114,8 @@ elif [[ "${BASHRC_HOST}" == "daint" ]]; then
     alias hh='cd /users/alauber/'
     alias jenkins='cd /scratch/snx3000/jenkins/workspace'
     alias lsa='ml daint-gpu && ml PyExtensions && ml cray-python PyExtensions python_virtualenv'
+    alias ex='sc && cd extpar && ml daint-gpu && ml CDO && . /project/g110/extpar_envs/venv_jenkins_daint/bin/activate && export PYTHONPATH=$PYTHONPATH:$(pwd)/python/lib'
+
 # dom
 elif [[ "${BASHRC_HOST}" == "dom" ]]; then
     alias srcspack="source $SPACK_ROOT/share/spack/setup-env.sh"
