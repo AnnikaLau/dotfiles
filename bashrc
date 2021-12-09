@@ -36,9 +36,11 @@ parse_git_branch() {
 git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
-# Command prompt
-short_host="${HOSTNAME:0:2}-${HOSTNAME:${#HOSTNAME}-1:${#HOSTNAME}}"
-export PS1="\u@$short_host:\W\[\033[33m\]\$(parse_git_branch)\[\033[00m\]> "
+if [[ ! -z $HOSTNAME ]]; then # Does not work on Mac
+    # Command prompt
+    short_host="${HOSTNAME:0:2}-${HOSTNAME:${#HOSTNAME}-1:${#HOSTNAME}}"
+    export PS1="\u@$short_host:\W\[\033[33m\]\$(parse_git_branch)\[\033[00m\]> "
+fi
 
 # Custom modules/paths/envs for each machine
 
@@ -185,4 +187,7 @@ alias ncd='ncdump -h'
 alias ncw='ncview'
 alias fp='find "$PWD" -name'
 alias ipython='python -m IPython'
-
++alias mountEuler='sshfs euler:/cluster/scratch/alauber/ ~/Documents/Programming/Euler'
++alias umountEuler='umount ~/Documents/Programming/Euler'
++alias mountDaint='sshfs daint:/scratch/snx3000/alauber/ ~/Documents/Programming/Daint' 
++alias umountDaint='umount ~/Documents/Programming/Daint'
