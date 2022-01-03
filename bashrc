@@ -44,6 +44,13 @@ fi
 
 # Custom modules/paths/envs for each machine
 
+# local
+if [[ -z $HOSTNAME ]]; then
+    setopt auto_cd
+    alias hh='/Users/alauber'
+    alias sc="/Users/alauber/Documents/Programming" 
+fi
+
 # tsa
 if [[ "${BASHRC_HOST}" == "tsa" ]]; then
     source /oprusers/osm/.opr_setup_dir
