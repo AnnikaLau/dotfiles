@@ -198,3 +198,4 @@ alias mountEuler='sshfs euler:/cluster/scratch/alauber/ ~/Documents/Programming/
 alias umountEuler='umount ~/Documents/Programming/Euler'
 alias mountDaint='sshfs daint:/scratch/snx3000/alauber/ ~/Documents/Programming/Daint' 
 alias umountDaint='umount ~/Documents/Programming/Daint'
+alias lsC='ctags -R'
