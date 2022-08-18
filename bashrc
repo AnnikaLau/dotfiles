@@ -135,6 +135,7 @@ elif [[ "${BASHRC_HOST}" == "daint" ]]; then
     alias spak="spack  --config-scope=${HOME}/.spack/$BASHRC_HOST"
     alias sc='cd /scratch/snx3000/alauber/'
     alias aall="scancel -u alauber"
+    alias c="scancel"
     alias sq='squeue -u alauber'
     alias squ='squeue'
     alias hh='cd /users/alauber/'
