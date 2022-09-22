@@ -158,11 +158,11 @@ elif [[ "${BASHRC_HOST}" == "euler" ]]; then
     alias srcspack="source $SPACK_ROOT/share/spack/setup-env.sh"
     alias spak="spack  --config-scope=${HOME}/.spack/$BASHRC_HOST"
     alias sc='cd /cluster/scratch/alauber/'
-    alias aall="bkill 0"
+    alias c="scancel"
+    alias aall="scancel -u alauber"
     alias hh='cd /cluster/home/alauber/'
-    alias sq='bjobs'
-    alias squ='bbjobs'
-    alias lsa='sc && source icon/modules.env && source scaling_analysis/myenv/bin/activate && ml python && cd -'  
+    alias sq='squeue -u alauber'
+    alias squ='squeue'
 
 # mistral
 elif [[ "${BASHRC_HOST}" == "mistral" ]]; then
