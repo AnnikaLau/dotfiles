@@ -48,7 +48,7 @@ fi
 if [[ -z $HOSTNAME ]]; then
     setopt auto_cd
     alias hh='/Users/alauber'
-    alias sc="/Users/alauber/Documents/Programming" 
+    alias sc="/Users/alauber/Documents/C2SM"
 fi
 
 # tsa
