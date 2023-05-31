@@ -11,6 +11,8 @@ if [[ "${HOSTNAME}" == tsa* ]]; then
     BASHRC_HOST='tsa'
 elif [[ "${HOSTNAME}" == daint* ]]; then 
     BASHRC_HOST='daint'
+elif [[ "${HOSTNAME}" == balfrin* ]]; then
+    BASHRC_HOST='balfrin'
 elif [[ "${HOSTNAME}" == dom* ]]; then 
     BASHRC_HOST='dom'
 elif [[ "${HOSTNAME}" == eu* ]]; then 
@@ -74,6 +76,26 @@ elif [[ "${BASHRC_HOST}" == "daint" ]]; then
             . "/scratch/snx3000/alauber/miniconda3/etc/profile.d/conda.sh"
         else
             export PATH="/scratch/snx3000/alauber/miniconda3/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+    # <<< conda initialize <<<
+
+# balfrin
+elif [[ "${BASHRC_HOST}" == "balfrin" ]]; then
+    . /etc/bash_completion.d/git.sh
+    export PATH=$PATH:/users/alauber/script_utils
+    test -s ~/.profile && . ~/.profile || true
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/scratch/e1000/meteoswiss/scratch/alauber/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/scratch/e1000/meteoswiss/scratch/alauber/miniconda3/etc/profile.d/conda.sh" ]; then
+            . "/scratch/e1000/meteoswiss/scratch/alauber/miniconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/scratch/e1000/meteoswiss/scratch/alauber/miniconda3/bin:$PATH"
         fi
     fi
     unset __conda_setup
@@ -143,6 +165,14 @@ elif [[ "${BASHRC_HOST}" == "daint" ]]; then
     alias lsa='ml daint-gpu && ml PyExtensions && ml cray-python PyExtensions python_virtualenv'
     alias ex='sc && cd extpar && ml daint-gpu && ml CDO && . /project/g110/extpar_envs/venv_jenkins_daint/bin/activate && export PYTHONPATH=$PYTHONPATH:$(pwd)/python/lib'
 
+# balfrin
+elif [[ "${BASHRC_HOST}" == "balfrin" ]]; then
+    alias sc='cd /scratch/e1000/meteoswiss/scratch/alauber'
+    alias aall="scancel -u alauber"
+    alias c="scancel"
+    alias sq='squeue -u alauber'
+    alias squ='squeue'
+    alias hh='cd /users/alauber/'
 # dom
 elif [[ "${BASHRC_HOST}" == "dom" ]]; then
     alias srcspack="source $SPACK_ROOT/share/spack/setup-env.sh"
