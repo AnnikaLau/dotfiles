@@ -51,6 +51,10 @@ if [[ -z $HOSTNAME ]]; then
     setopt auto_cd
     alias hh='/Users/alauber'
     alias sc="/Users/alauber/Documents/C2SM"
+    alias mountEuler='sshfs euler:/cluster/scratch/alauber/ ~/Documents/C2SM/Euler'
+    alias umountEuler='umount ~/Documents/C2SM/Euler'
+    alias mountDaint='sshfs daint:/scratch/snx3000/alauber/ ~/Documents/C2SM/Daint'
+    alias umountDaint='umount ~/Documents/C2SM/Daint'
 fi
 
 # tsa
@@ -124,27 +128,10 @@ elif [[ "${BASHRC_HOST}" == "dom" ]]; then
     test -s ~/.profile && . ~/.profile || true
 fi
 
-# Spack
-case ${BASHRC_HOST} in
-      tsa) 
-          export SPACK_ROOT=/project/g110/spack/user/tsa/spack 
-          ;;
-      daint) 
-          export SPACK_ROOT=/project/g110/spack/user/daint/spack
-          ;;
-      dom) 
-          export SPACK_ROOT=/project/g110/spack/user/dom/spack 
-          ;;
-      *)
-          echo bashrc: Spack not available on $BASHRC_HOST!
-esac
-
 # Machine specific aliases
 
 # tsa
 if [[ "${BASHRC_HOST}" == "tsa" ]]; then
-    alias srcspack="source $SPACK_ROOT/share/spack/setup-env.sh"
-    alias spak="spack  --config-scope=${HOME}/.spack/$BASHRC_HOST"
     alias sc='cd /scratch/alauber/'
     alias aall="scancel -u alauber"
     alias sq='squeue -u alauber'
@@ -153,17 +140,11 @@ if [[ "${BASHRC_HOST}" == "tsa" ]]; then
 
 # daint
 elif [[ "${BASHRC_HOST}" == "daint" ]]; then
-    alias srcspack="source $SPACK_ROOT/share/spack/setup-env.sh"
-    alias spak="spack  --config-scope=${HOME}/.spack/$BASHRC_HOST"
     alias sc='cd /scratch/snx3000/alauber/'
     alias aall="scancel -u alauber"
     alias c="scancel"
     alias sq='squeue -u alauber'
-    alias squ='squeue'
     alias hh='cd /users/alauber/'
-    alias jenkins='cd /scratch/snx3000/jenkins/workspace'
-    alias lsa='ml daint-gpu && ml PyExtensions && ml cray-python PyExtensions python_virtualenv'
-    alias ex='sc && cd extpar && ml daint-gpu && ml CDO && . /project/g110/extpar_envs/venv_jenkins_daint/bin/activate && export PYTHONPATH=$PYTHONPATH:$(pwd)/python/lib'
 
 # balfrin
 elif [[ "${BASHRC_HOST}" == "balfrin" ]]; then
@@ -171,49 +152,31 @@ elif [[ "${BASHRC_HOST}" == "balfrin" ]]; then
     alias aall="scancel -u alauber"
     alias c="scancel"
     alias sq='squeue -u alauber'
-    alias squ='squeue'
     alias hh='cd /users/alauber/'
 # dom
 elif [[ "${BASHRC_HOST}" == "dom" ]]; then
-    alias srcspack="source $SPACK_ROOT/share/spack/setup-env.sh"
-    alias spak="spack  --config-scope=${HOME}/.spack/$BASHRC_HOST"
     alias sc='cd /scratch/snx3000tds/alauber/'
     alias aall="scancel -u alauber"
     alias sq='squeue -u alauber'
-    alias squ='squeue'
     alias hh='cd /users/alauber/'
 
 # euler
 elif [[ "${BASHRC_HOST}" == "euler" ]]; then
-    alias srcspack="source $SPACK_ROOT/share/spack/setup-env.sh"
-    alias spak="spack  --config-scope=${HOME}/.spack/$BASHRC_HOST"
     alias sc='cd /cluster/scratch/alauber/'
     alias c="scancel"
     alias aall="scancel -u alauber"
     alias hh='cd /cluster/home/alauber/'
     alias sq='squeue -u alauber'
-    alias squ='squeue'
 
 # mistral
 elif [[ "${BASHRC_HOST}" == "mistral" ]]; then
     alias aall="scancel -u b381001"
     alias sq='squeue -u b381001'
-    alias squ='squeue'
     alias hh='cd /pf/b/b381001'
     alias sc='cd /scratch/b/b381001'
-    alias jenkins='cd /mnt/lustre01/scratch/b/b380729/workspace'
 fi
 
 # Model specific aliases
-
-# COSMO
-alias ct="cat testsuite.out"
-alias tt="tail -f testsuite.out"
-alias bu='./test/jenkins/build.sh'
-alias vo='vim INPUT_ORG'
-alias vp='vim INPUT_PHY'
-alias vd='vim INPUT_DYN'
-alias vio='vim INPUT_IO'
 
 # ICON
 alias lsL='ls -ltr LOG*' 
@@ -227,6 +190,8 @@ alias la='ls -A'
 alias g='grep -i'
 alias t='tail -f'
 alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 alias ml='module load'
 alias su='source'
 alias srcrc='source ~/.bashrc'
@@ -243,8 +208,4 @@ alias ncd='ncdump -h'
 alias ncw='ncview'
 alias fp='find "$PWD" -name'
 alias ipython='python -m IPython'
-alias mountEuler='sshfs euler:/cluster/scratch/alauber/ ~/Documents/C2SM/Euler'
-alias umountEuler='umount ~/Documents/C2SM/Euler'
-alias mountDaint='sshfs daint:/scratch/snx3000/alauber/ ~/Documents/C2SM/Daint'
-alias umountDaint='umount ~/Documents/C2SM/Daint'
 alias lsC='ctags -R'
