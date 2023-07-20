@@ -70,16 +70,17 @@ elif [[ "${BASHRC_HOST}" == "daint" ]]; then
     . /etc/bash_completion.d/git.sh
     export PATH=$PATH:/users/alauber/script_utils
     test -s ~/.profile && . ~/.profile || true
+    export CONDA_ENVS_PATH=$PROJECT/envs
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('/scratch/snx3000/alauber/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    __conda_setup="$('/users/alauber/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
     if [ $? -eq 0 ]; then
         eval "$__conda_setup"
     else
-        if [ -f "/scratch/snx3000/alauber/miniconda3/etc/profile.d/conda.sh" ]; then
-            . "/scratch/snx3000/alauber/miniconda3/etc/profile.d/conda.sh"
+        if [ -f "/users/alauber/miniconda3/etc/profile.d/conda.sh" ]; then
+            . "/users/alauber/miniconda3/etc/profile.d/conda.sh"
         else
-            export PATH="/scratch/snx3000/alauber/miniconda3/bin:$PATH"
+            export PATH="/users/alauber/miniconda3/bin:$PATH"
         fi
     fi
     unset __conda_setup
