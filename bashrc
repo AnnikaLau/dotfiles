@@ -73,6 +73,8 @@ elif [[ "${BASHRC_HOST}" == "daint" ]]; then
     export PATH=$PATH:/users/alauber/script_utils
     test -s ~/.profile && . ~/.profile || true
     export CONDA_ENVS_PATH=$PROJECT/envs
+    # use mamba
+    export PATH="/users/alauber/mambaforge/bin:$PATH"
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
     __conda_setup="$('/users/alauber/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
