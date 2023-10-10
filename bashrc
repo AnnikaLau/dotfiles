@@ -96,6 +96,7 @@ elif [[ "${BASHRC_HOST}" == "daint" ]]; then
 elif [[ "${BASHRC_HOST}" == "balfrin" ]]; then
     . /etc/bash_completion.d/git.sh
     export PATH=$PATH:/users/alauber/script_utils
+    export MODULEPATH=/mch-environment/v5/modules:/usr/share/modules:/usr/share/Modules/$MODULE_VERSION/modulefiles:/usr/share/modules/modulefiles
     test -s ~/.profile && . ~/.profile || true
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
