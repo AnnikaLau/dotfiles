@@ -74,23 +74,25 @@ elif [[ "${BASHRC_HOST}" == "daint" ]]; then
     . /etc/bash_completion.d/git.sh
     export PATH=$PATH:/users/alauber/script_utils
     test -s ~/.profile && . ~/.profile || true
-    export CONDA_ENVS_PATH=$PROJECT/envs
-    # use mamba
-    export PATH="/users/alauber/mambaforge/bin:$PATH"
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('/users/alauber/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    __conda_setup="$('/users/alauber/mambaforge/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
     if [ $? -eq 0 ]; then
         eval "$__conda_setup"
     else
-        if [ -f "/users/alauber/miniconda3/etc/profile.d/conda.sh" ]; then
-            . "/users/alauber/miniconda3/etc/profile.d/conda.sh"
+        if [ -f "/users/alauber/mambaforge/etc/profile.d/conda.sh" ]; then
+            . "/users/alauber/mambaforge/etc/profile.d/conda.sh"
         else
-            export PATH="/users/alauber/miniconda3/bin:$PATH"
+            export PATH="/users/alauber/mambaforge/bin:$PATH"
         fi
     fi
     unset __conda_setup
+
+    if [ -f "/users/alauber/mambaforge/etc/profile.d/mamba.sh" ]; then
+        . "/users/alauber/mambaforge/etc/profile.d/mamba.sh"
+    fi
     # <<< conda initialize <<<
+    export CONDA_ENVS_PATH=$PROJECT/envs
 
 # balfrin
 elif [[ "${BASHRC_HOST}" == "balfrin" ]]; then
@@ -98,39 +100,7 @@ elif [[ "${BASHRC_HOST}" == "balfrin" ]]; then
     export PATH=$PATH:/users/alauber/script_utils
     export MODULEPATH=/mch-environment/v5/modules:/usr/share/modules:/usr/share/Modules/$MODULE_VERSION/modulefiles:/usr/share/modules/modulefiles
     test -s ~/.profile && . ~/.profile || true
-    # >>> conda initialize >>>
-    # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('/scratch/e1000/meteoswiss/scratch/alauber/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
-    else
-        if [ -f "/scratch/e1000/meteoswiss/scratch/alauber/miniconda3/etc/profile.d/conda.sh" ]; then
-            . "/scratch/e1000/meteoswiss/scratch/alauber/miniconda3/etc/profile.d/conda.sh"
-        else
-            export PATH="/scratch/e1000/meteoswiss/scratch/alauber/miniconda3/bin:$PATH"
-        fi
-    fi
-    unset __conda_setup
-    # <<< conda initialize <<<
 
-# euler
-elif [[ "${BASHRC_HOST}" == "euler" ]]; then
-    # >>> conda initialize >>>
-    # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('/cluster/scratch/alauber/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
-    else
-        if [ -f "/cluster/scratch/alauber/miniconda3/etc/profile.d/conda.sh" ]; then
-             . "/cluster/scratch/alauber/miniconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
-            echo one
-        else
-             export PATH="/cluster/scratch/alauber/miniconda3/bin:$PATH"  # commented out by conda initialize
-            echo two
-        fi
-    fi
-    unset __conda_setup
-    # <<< conda initialize <<<
 # dom
 elif [[ "${BASHRC_HOST}" == "dom" ]]; then
     test -s ~/.profile && . ~/.profile || true
@@ -226,3 +196,4 @@ alias ncw='ncview'
 alias fp='find "$PWD" -name'
 alias ipython='python -m IPython'
 alias lsC='ctags -R'
+
