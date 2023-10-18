@@ -57,7 +57,7 @@ if [[ -z $HOSTNAME ]]; then
     alias umountEuler='umount ~/Documents/C2SM/Euler'
     alias mountDaint='sshfs daint:/scratch/snx3000/alauber/ ~/Documents/C2SM/Daint'
     alias umountDaint='umount ~/Documents/C2SM/Daint'
-    alias mountBalfrin='sshfs balfrin:/scratch/e1000/meteoswiss/scratch/alauber/ ~/Documents/C2SM/Balfrin'
+    alias mountBalfrin='sshfs balfrin:/scratch/mch/alauber/ ~/Documents/C2SM/Balfrin'
     alias umountBalfrin='umount ~/Documents/C2SM/Balfrin'
 fi
 
@@ -126,7 +126,7 @@ elif [[ "${BASHRC_HOST}" == "daint" ]]; then
 
 # balfrin
 elif [[ "${BASHRC_HOST}" == "balfrin" ]]; then
-    alias sc='cd /scratch/e1000/meteoswiss/scratch/alauber'
+    alias sc='cd /scratch/mch/alauber'
     alias aall="scancel -u alauber"
     alias c="scancel"
     alias sq='squeue -u alauber'
