@@ -104,8 +104,6 @@ elif [[ "${BASHRC_HOST}" == "balfrin" ]]; then
 
 # vial
 elif [[ "${BASHRC_HOST}" == "vial" ]]; then
-    # Mount starting script
-    squashfs-mount $SCRATCH/starting_scripts/vial-v1.0.squashfs:/user-environment -- bash
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
     __conda_setup="$('/capstor/scratch/cscs/alauber/icon-nwp/vial_cluster/externals/probtest/miniconda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
