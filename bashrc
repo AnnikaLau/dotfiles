@@ -157,6 +157,7 @@ elif [[ "${BASHRC_HOST}" == "vial" ]]; then
     alias c="scancel"
     alias sq='squeue -u alauber'
     alias hh='cd /users/alauber/'
+    alias m='squashfs-mount $SCRATCH/starting_scripts/vial-v1.0.squashfs:/user-environment -- bash'
 
 # dom
 elif [[ "${BASHRC_HOST}" == "dom" ]]; then
