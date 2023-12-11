@@ -101,6 +101,26 @@ elif [[ "${BASHRC_HOST}" == "balfrin" ]]; then
     export MODULEPATH=/mch-environment/v5/modules:/usr/share/modules:/usr/share/Modules/$MODULE_VERSION/modulefiles:/usr/share/modules/modulefiles
     test -s ~/.profile && . ~/.profile || true
 
+
+# vial
+elif [[ "${BASHRC_HOST}" == "vial" ]]; then
+    # Mount starting script
+    squashfs-mount $SCRATCH/starting_scripts/vial-v1.0.squashfs:/user-environment -- bash
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/capstor/scratch/cscs/alauber/icon-nwp/vial_cluster/externals/probtest/miniconda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/capstor/scratch/cscs/alauber/icon-nwp/vial_cluster/externals/probtest/miniconda/etc/profile.d/conda.sh" ]; then
+            . "/capstor/scratch/cscs/alauber/icon-nwp/vial_cluster/externals/probtest/miniconda/etc/profile.d/conda.sh"
+        else
+            export PATH="/capstor/scratch/cscs/alauber/icon-nwp/vial_cluster/externals/probtest/miniconda/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+    # <<< conda initialize <<<
+
 # dom
 elif [[ "${BASHRC_HOST}" == "dom" ]]; then
     test -s ~/.profile && . ~/.profile || true
