@@ -118,6 +118,7 @@ elif [[ "${BASHRC_HOST}" == "vial" ]]; then
     fi
     unset __conda_setup
     # <<< conda initialize <<<
+    echo Mount squashfs!
 
 # dom
 elif [[ "${BASHRC_HOST}" == "dom" ]]; then
