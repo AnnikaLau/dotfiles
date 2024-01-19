@@ -217,6 +217,5 @@ alias fp='find "$PWD" -name'
 alias ipython='python -m IPython'
 alias lsC='ctags -R'
 alias last='vim "$(stat --printf "%n/%Y\0" * | sort -rz -t"/" -k 2 | head -z -n 1 | cut -d"/" -z -f 1 )" 2>/dev/null'
-alias mr='./make_runscripts ${EXP}'
-alias cr='cd run'
+alias mr='./make_runscripts ${EXP} && cd run'
 
