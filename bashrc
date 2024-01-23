@@ -142,7 +142,7 @@ elif [[ "${BASHRC_HOST}" == "daint" ]]; then
     alias c="scancel"
     alias sq='squeue -u alauber'
     alias hh='cd /users/alauber/'
-    alias st='[ "$(cd spack-c2sm && git describe --tags)" = "$(cat "config/cscs/SPACK_TAG_DAINT | tr '[:upper:]' '[:lower:]' | tr '[:lower:]' '[:upper:]')" 2>/dev/null)" ] && echo "Spack tag correct" || echo "Spack tag has changed"'
+    alias st='[ "$(cd spack-c2sm && git describe --tags)" = "$(cat "config/cscs/SPACK_TAG_DAINT" 2>/dev/null)" ] && echo "Spack tag correct" || echo "Spack tag has changed"'
 
 # balfrin
 elif [[ "${BASHRC_HOST}" == "balfrin" ]]; then
@@ -151,7 +151,7 @@ elif [[ "${BASHRC_HOST}" == "balfrin" ]]; then
     alias c="scancel"
     alias sq='squeue -u alauber'
     alias hh='cd /users/alauber/'
-    alias st='[ "$(cd spack-c2sm && git describe --tags)" = "$(cat "config/cscs/SPACK_TAG_BALFRIN | tr '[:upper:]' '[:lower:]' | tr '[:lower:]' '[:upper:]')" 2>/dev/null)" ] && echo "Spack tag correct" || echo "Spack tag has changed"'
+    alias st='[ "$(cd spack-c2sm && git describe --tags)" = "$(cat "config/cscs/SPACK_TAG_BALFRIN" 2>/dev/null)" ] && echo "Spack tag correct" || echo "Spack tag has changed"'
 
 # vial
 elif [[ "${BASHRC_HOST}" == "vial" ]]; then
