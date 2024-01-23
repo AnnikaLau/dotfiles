@@ -218,4 +218,4 @@ alias ipython='python -m IPython'
 alias lsC='ctags -R'
 alias last='vim "$(stat --printf "%n/%Y\0" * | sort -rz -t"/" -k 2 | head -z -n 1 | cut -d"/" -z -f 1 )" 2>/dev/null'
 alias mr='./make_runscripts ${EXP} && cd run'
-
+alias st='[ "$(cd spack-c2sm && git describe --tags)" = "$(cat "config/cscs/SPACK_TAG_$(echo $BASHRC_HOST | tr '[:upper:]' '[:lower:]' | tr '[:lower:]' '[:upper:]')" 2>/dev/null)" ] && echo "Spack tag correct" || echo "Spack tag has changed"'
