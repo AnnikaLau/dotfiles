@@ -4,6 +4,9 @@
 # settings made here will also take effect in a login shell.
 #
 
+# Don't do anything when not running interactively (scp does not work with echo)
+[[ $- == *i* ]] || return
+
 test -s ~/.alias && . ~/.alias || true
 
 # determine hostname for later use in all dotfiles
