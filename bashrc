@@ -109,14 +109,14 @@ elif [[ "${BASHRC_HOST}" == "balfrin" ]]; then
 elif [[ "${BASHRC_HOST}" == "vial" ]]; then
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('/capstor/scratch/cscs/alauber/icon-nwp/vial_cluster/externals/probtest/miniconda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    __conda_setup="$('/capstor/scratch/cscs/alauber/probtest/miniconda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
     if [ $? -eq 0 ]; then
         eval "$__conda_setup"
     else
-        if [ -f "/capstor/scratch/cscs/alauber/icon-nwp/vial_cluster/externals/probtest/miniconda/etc/profile.d/conda.sh" ]; then
-            . "/capstor/scratch/cscs/alauber/icon-nwp/vial_cluster/externals/probtest/miniconda/etc/profile.d/conda.sh"
+        if [ -f "/capstor/scratch/cscs/alauber/probtest/miniconda/etc/profile.d/conda.sh" ]; then
+            . "/capstor/scratch/cscs/alauber/probtest/miniconda/etc/profile.d/conda.sh"
         else
-            export PATH="/capstor/scratch/cscs/alauber/icon-nwp/vial_cluster/externals/probtest/miniconda/bin:$PATH"
+            export PATH="/capstor/scratch/cscs/alauber/probtest/miniconda/bin:$PATH"
         fi
     fi
     unset __conda_setup
