@@ -192,7 +192,6 @@ fi
 
 # ICON
 alias lsL='ls -ltr LOG*' 
-alias tL='tail -f LOG*'
 
 
 # General aliases
@@ -201,7 +200,7 @@ alias lsl='ls -ltrh --color'
 alias la='ls -A'
 alias g='grep -i --color'
 alias gr='g -R'
-alias t='tail -f'
+alias tL='tail -f $(stat --printf "%n/%Y\0" * | sort -rz -t"/" -k 2 | head -z -n 1 | cut -d"/" -z -f 1 )'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
