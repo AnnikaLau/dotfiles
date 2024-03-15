@@ -162,7 +162,7 @@ elif [[ "${BASHRC_HOST}" == "dom" ]]; then
 elif [[ "${BASHRC_HOST}" == "euler" ]]; then
     alias sc='cd /cluster/scratch/alauber/'
     alias hh='cd /cluster/home/alauber/'
-
+fi
 # Model specific aliases
 
 # ICON
