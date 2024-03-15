@@ -133,68 +133,47 @@ fi
 # tsa
 if [[ "${BASHRC_HOST}" == "tsa" ]]; then
     alias sc='cd /scratch/alauber/'
-    alias aall="scancel -u alauber"
-    alias sq='squeue -u alauber'
-    alias squ='squeue'
     alias hh='cd /users/alauber/'
 
 # daint
 elif [[ "${BASHRC_HOST}" == "daint" ]]; then
     alias sc='cd /scratch/snx3000/alauber/'
-    alias aall="scancel -u alauber"
-    alias c="scancel"
-    alias sq='squeue -u alauber'
     alias hh='cd /users/alauber/'
     alias st='[ "$(cd spack-c2sm && git describe --tags)" = "$(cat "config/cscs/SPACK_TAG_C2SM" 2>/dev/null)" ] && echo "Spack tag correct" || echo "Spack tag has changed"'
 
 # balfrin
 elif [[ "${BASHRC_HOST}" == "balfrin" ]]; then
     alias sc='cd /scratch/mch/alauber'
-    alias aall="scancel -u alauber"
-    alias c="scancel"
-    alias sq='squeue -u alauber'
     alias hh='cd /users/alauber/'
     alias st='[ "$(cd spack-c2sm && git describe --tags)" = "$(cat "config/cscs/SPACK_TAG_MCH" 2>/dev/null)" ] && echo "Spack tag correct" || echo "Spack tag has changed"'
 
 # vial
 elif [[ "${BASHRC_HOST}" == "vial" ]]; then
     alias sc='cd /capstor/scratch/cscs/alauber'
-    alias aall="scancel -u alauber"
-    alias c="scancel"
-    alias sq='squeue -u alauber'
     alias hh='cd /users/alauber/'
     alias m='squashfs-mount $SCRATCH/starting_scripts/vial-v1.0.squashfs:/user-environment -- bash'
 
 # dom
 elif [[ "${BASHRC_HOST}" == "dom" ]]; then
     alias sc='cd /scratch/snx3000tds/alauber/'
-    alias aall="scancel -u alauber"
-    alias sq='squeue -u alauber'
     alias hh='cd /users/alauber/'
 
 # euler
 elif [[ "${BASHRC_HOST}" == "euler" ]]; then
     alias sc='cd /cluster/scratch/alauber/'
-    alias c="scancel"
-    alias aall="scancel -u alauber"
     alias hh='cd /cluster/home/alauber/'
-    alias sq='squeue -u alauber'
-
-# mistral
-elif [[ "${BASHRC_HOST}" == "mistral" ]]; then
-    alias aall="scancel -u b381001"
-    alias sq='squeue -u b381001'
-    alias hh='cd /pf/b/b381001'
-    alias sc='cd /scratch/b/b381001'
-fi
 
 # Model specific aliases
 
 # ICON
 alias lsL='ls -ltr LOG*' 
+alias gi='g -R --exclude-dir=nvhpc_cpu --exclude-dir=nvhpc_gpu --exclude-dir=nvhpc_cpu_mixed --exclude-dir=nvhpc_gpu_mixed --exclude-dir=spack-c2sm --exclude-dir=externals'
 
 
 # General aliases
+alias c="scancel"
+alias sq='squeue -u alauber'
+alias aall="scancel -u alauber"
 alias ls='ls --color'
 alias lsl='ls -ltrh --color'
 alias la='ls -A'
@@ -223,4 +202,3 @@ alias ipython='python -m IPython'
 alias lsC='ctags -R'
 alias last='vim "$(stat --printf "%n/%Y\0" * | sort -rz -t"/" -k 2 | head -z -n 1 | cut -d"/" -z -f 1 )" 2>/dev/null'
 alias mr='./make_runscripts ${EXP} && cd run'
-alias gi='g -R --exclude-dir=nvhpc_cpu --exclude-dir=nvhpc_gpu --exclude-dir=nvhpc_cpu_mixed --exclude-dir=nvhpc_gpu_mixed --exclude-dir=spack-c2sm --exclude-dir=externals'
