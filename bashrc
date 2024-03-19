@@ -164,6 +164,8 @@ alias mr='if [[ -z "$EXP" ]]; then echo "EXP not set"; else ./make_runscripts ${
 alias gi='g -R --exclude-dir=nvhpc_cpu --exclude-dir=nvhpc_gpu --exclude-dir=nvhpc_cpu_mixed --exclude-dir=nvhpc_gpu_mixed --exclude-dir=spack-c2sm --exclude-dir=externals'
 alias ce='if [[ -z "$EXP" ]]; then echo "EXP not set"; else cp run/exp.$EXP nvhpc_cpu/run/. && cp run/exp.$EXP nvhpc_gpu/run/. && cp run/exp.$EXP nvhpc_cpu_mixed/run/. && cp run/exp.$EXP nvhpc_gpu_mixed/run/.; fi'
 alias ch='cp run/tolerance/hashes/* nvhpc_cpu/run/tolerance/hashes/. && cp run/tolerance/hashes/* nvhpc_gpu/run/tolerance/hashes/. && cp run/tolerance/hashes/* nvhpc_cpu_mixed/run/tolerance/hashes/. && cp run/tolerance/hashes/* nvhpc_gpu_mixed/run/tolerance/hashes/.'
+alias re='if [[ "$(basename "$(pwd)")" == "run" ]]; then rm -rf ../experiments; else rm -rf experiments; fi'
+
 
 
 
