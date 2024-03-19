@@ -54,7 +54,6 @@ fi
 # local
 if [[ -z $HOSTNAME ]]; then
     setopt auto_cd
-    alias hh='/Users/alauber'
     alias sc="/Users/alauber/Documents/C2SM"
     alias mountEuler='sshfs euler:/cluster/scratch/alauber/ ~/Documents/C2SM/Euler'
     alias umountEuler='umount ~/Documents/C2SM/Euler'
@@ -133,35 +132,29 @@ fi
 # tsa
 if [[ "${BASHRC_HOST}" == "tsa" ]]; then
     alias sc='cd /scratch/alauber/'
-    alias hh='cd /users/alauber/'
 
 # daint
 elif [[ "${BASHRC_HOST}" == "daint" ]]; then
     alias sc='cd /scratch/snx3000/alauber/'
-    alias hh='cd /users/alauber/'
     alias st='[ "$(cd spack-c2sm && git describe --tags)" = "$(cat "config/cscs/SPACK_TAG_C2SM" 2>/dev/null)" ] && echo "Spack tag correct" || echo "Spack tag has changed"'
 
 # balfrin
 elif [[ "${BASHRC_HOST}" == "balfrin" ]]; then
     alias sc='cd /scratch/mch/alauber'
-    alias hh='cd /users/alauber/'
     alias st='[ "$(cd spack-c2sm && git describe --tags)" = "$(cat "config/cscs/SPACK_TAG_MCH" 2>/dev/null)" ] && echo "Spack tag correct" || echo "Spack tag has changed"'
 
 # vial
 elif [[ "${BASHRC_HOST}" == "vial" ]]; then
     alias sc='cd /capstor/scratch/cscs/alauber'
-    alias hh='cd /users/alauber/'
     alias m='squashfs-mount $SCRATCH/starting_scripts/vial-v1.0.squashfs:/user-environment -- bash'
 
 # dom
 elif [[ "${BASHRC_HOST}" == "dom" ]]; then
     alias sc='cd /scratch/snx3000tds/alauber/'
-    alias hh='cd /users/alauber/'
 
 # euler
 elif [[ "${BASHRC_HOST}" == "euler" ]]; then
     alias sc='cd /cluster/scratch/alauber/'
-    alias hh='cd /cluster/home/alauber/'
 fi
 # Model specific aliases
 
@@ -184,16 +177,12 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias ml='module load'
-alias su='source'
 alias srcrc='source ~/.bashrc'
-alias rcvim='vim ~/.bashrc'
 alias gt='git status'
 alias ga='git add'
 alias gco='git commit'
 alias gc='git checkout'
 alias gd='git diff'
-alias gsi='git submodule init'
-alias gsu='git submodule update'
 alias gsui='git submodule update --init'
 alias ncd='ncdump -h'
 alias ncw='ncview'
