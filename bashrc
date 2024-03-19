@@ -166,6 +166,7 @@ alias gi='g -R --exclude-dir=nvhpc_cpu --exclude-dir=nvhpc_gpu --exclude-dir=nvh
 # General aliases
 alias c="scancel"
 alias sq='squeue -u alauber'
+alias sqw='watch -n 3 squeue -u alauber'
 alias aall="scancel -u alauber"
 alias ls='ls --color'
 alias lsl='ls -ltrh --color'
