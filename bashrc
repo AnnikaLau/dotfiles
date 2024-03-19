@@ -160,7 +160,11 @@ fi
 
 # ICON
 alias lsL='ls -ltr LOG*' 
+alias mr='if [[ -z "$EXP" ]]; then echo "EXP not set"; else ./make_runscripts ${EXP} && cd run; fi'
 alias gi='g -R --exclude-dir=nvhpc_cpu --exclude-dir=nvhpc_gpu --exclude-dir=nvhpc_cpu_mixed --exclude-dir=nvhpc_gpu_mixed --exclude-dir=spack-c2sm --exclude-dir=externals'
+alias ce='if [[ -z "$EXP" ]]; then echo "EXP not set"; else cp run/exp.$EXP nvhpc_cpu/run/. && cp run/exp.$EXP nvhpc_gpu/run/. && cp run/exp.$EXP nvhpc_cpu_mixed/run/. && cp run/exp.$EXP nvhpc_gpu_mixed/run/.; fi'
+alias ch='cp run/tolerance/hashes/* nvhpc_cpu/run/tolerance/hashes/. && cp run/tolerance/hashes/* nvhpc_gpu/run/tolerance/hashes/. && cp run/tolerance/hashes/* nvhpc_cpu_mixed/run/tolerance/hashes/. && cp run/tolerance/hashes/* nvhpc_gpu_mixed/run/tolerance/hashes/.'
+
 
 
 # General aliases
@@ -191,4 +195,3 @@ alias fp='find "$PWD" -name'
 alias ipython='python -m IPython'
 alias lsC='ctags -R'
 alias last='vim "$(stat --printf "%n/%Y\0" * | sort -rz -t"/" -k 2 | head -z -n 1 | cut -d"/" -z -f 1 )" 2>/dev/null'
-alias mr='./make_runscripts ${EXP} && cd run'
