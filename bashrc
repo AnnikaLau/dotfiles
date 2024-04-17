@@ -94,7 +94,8 @@ elif [[ "${BASHRC_HOST}" == "daint" ]]; then
         . "/users/alauber/mambaforge/etc/profile.d/mamba.sh"
     fi
     # <<< conda initialize <<<
-    export CONDA_ENVS_PATH=$PROJECT/envs
+    export PROJECT=/project/g110/alauber
+    export CONDA_ENVS_PATH=/project/g110/alauber/envs
 
 # balfrin
 elif [[ "${BASHRC_HOST}" == "balfrin" ]]; then
