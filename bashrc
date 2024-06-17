@@ -137,12 +137,10 @@ if [[ "${BASHRC_HOST}" == "tsa" ]]; then
 # daint
 elif [[ "${BASHRC_HOST}" == "daint" ]]; then
     alias sc='cd /scratch/snx3000/alauber/'
-    alias st='[ "$(cd spack-c2sm && git describe --tags)" = "$(cat "config/cscs/SPACK_TAG_C2SM" 2>/dev/null)" ] && echo "Spack tag correct" || echo "Spack tag has changed"'
 
 # balfrin
 elif [[ "${BASHRC_HOST}" == "balfrin" ]]; then
     alias sc='cd /scratch/mch/alauber'
-    alias st='[ "$(cd spack-c2sm && git describe --tags)" = "$(cat "config/cscs/SPACK_TAG_MCH" 2>/dev/null)" ] && echo "Spack tag correct" || echo "Spack tag has changed"'
 
 # vial
 elif [[ "${BASHRC_HOST}" == "vial" ]]; then
@@ -166,7 +164,7 @@ alias gi='g -R --exclude-dir=nvhpc_cpu --exclude-dir=nvhpc_gpu --exclude-dir=nvh
 alias ce='if [[ -z "$EXP" ]]; then echo "EXP not set"; else cp run/exp.$EXP nvhpc_cpu/run/. && cp run/exp.$EXP nvhpc_gpu/run/. && cp run/exp.$EXP nvhpc_cpu_mixed/run/. && cp run/exp.$EXP nvhpc_gpu_mixed/run/.; fi'
 alias ch='cp run/tolerance/hashes/* nvhpc_cpu/run/tolerance/hashes/. && cp run/tolerance/hashes/* nvhpc_gpu/run/tolerance/hashes/. && cp run/tolerance/hashes/* nvhpc_cpu_mixed/run/tolerance/hashes/. && cp run/tolerance/hashes/* nvhpc_gpu_mixed/run/tolerance/hashes/.'
 alias re='if [[ "$(basename "$(pwd)")" == "run" ]]; then rm -rf ../experiments; else rm -rf experiments; fi'
-
+alias st='cd spack-c2sm && echo "spack-c2sm -> $(git describe --tags)" && cd .. && bash -c '\''for file in config/cscs/SPACK_TAG_*; do echo "$file -> $(cat "$file")"; done'\'''
 
 
 
