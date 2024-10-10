@@ -16,6 +16,8 @@ elif [[ "${HOSTNAME}" == daint* ]]; then
     BASHRC_HOST='daint'
 elif [[ "${HOSTNAME}" == balfrin* ]]; then
     BASHRC_HOST='balfrin'
+elif [[ "${HOSTNAME}" == todi* ]]; then
+    BASHRC_HOST='todi'
 elif [[ "${HOSTNAME}" == ni* ]]; then
     BASHRC_HOST='vial'
 elif [[ "${HOSTNAME}" == dom* ]]; then 
@@ -141,6 +143,10 @@ elif [[ "${BASHRC_HOST}" == "daint" ]]; then
 # balfrin
 elif [[ "${BASHRC_HOST}" == "balfrin" ]]; then
     alias sc='cd /scratch/mch/alauber'
+
+# balfrin
+elif [[ "${BASHRC_HOST}" == "todi" ]]; then
+    alias sc='cd $SCRATCH'
 
 # vial
 elif [[ "${BASHRC_HOST}" == "vial" ]]; then
