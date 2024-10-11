@@ -177,7 +177,7 @@ alias st='cd spack-c2sm && echo "spack-c2sm -> $(git describe --tags)" && cd .. 
 # General aliases
 alias c="scancel"
 alias sq='squeue -u alauber'
-alias sqw='watch -n 3 squeue -u alauber'
+alias sqw='watch -n 30 squeue -u alauber'
 alias aall="scancel -u alauber"
 alias ls='ls --color'
 alias lsl='ls -ltrh --color'
