@@ -22,6 +22,8 @@ elif [[ "${HOSTNAME}" == ni* ]]; then
     BASHRC_HOST='vial'
 elif [[ "${HOSTNAME}" == dom* ]]; then 
     BASHRC_HOST='dom'
+elif [[ "${HOSTNAME}" == levante* ]]; then
+    BASHRC_HOST='levante'
 elif [[ "${HOSTNAME}" == eu* ]]; then 
 
     if tty -s; then
@@ -130,6 +132,35 @@ elif [[ "${BASHRC_HOST}" == "dom" ]]; then
     test -s ~/.profile && . ~/.profile || true
 fi
 
+# General aliases
+alias c="scancel"
+alias sq='squeue -u alauber'
+alias sqw='watch -n 30 squeue -u alauber'
+alias aall="scancel -u alauber"
+alias ls='ls --color'
+alias lsl='ls -ltrh --color'
+alias la='ls -A'
+alias g='grep -i --color'
+alias gr='g -R'
+alias tL='tail -f $(stat --printf "%n/%Y\0" * | sort -rz -t"/" -k 2 | head -z -n 1 | cut -d"/" -z -f 1 )'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias ml='module load'
+alias srcrc='source ~/.bashrc'
+alias gt='git status'
+alias ga='git add'
+alias gco='git commit'
+alias gc='git checkout'
+alias gd='git diff'
+alias gsui='git submodule update --init'
+alias ncd='ncdump -h'
+alias ncw='ncview'
+alias fp='find "$PWD" -name'
+alias ipython='python -m IPython'
+alias lsC='ctags -R'
+alias last='vim "$(stat --printf "%n/%Y\0" * | sort -rz -t"/" -k 2 | head -z -n 1 | cut -d"/" -z -f 1 )" 2>/dev/null'
+alias balfrin='unset LC_CTYPE; ssh balfrin'
 # Machine specific aliases
 
 # tsa
@@ -160,8 +191,11 @@ elif [[ "${BASHRC_HOST}" == "dom" ]]; then
 # euler
 elif [[ "${BASHRC_HOST}" == "euler" ]]; then
     alias sc='cd /cluster/scratch/alauber/'
+
+# levante
+elif [[ "${BASHRC_HOST}" == "levante" ]]; then
+    alias sq='squeue -u b381727'
 fi
-# Model specific aliases
 
 # ICON
 alias lsL='ls -ltr LOG*' 
@@ -171,35 +205,3 @@ alias ce='if [[ -z "$EXP" ]]; then echo "EXP not set"; else cp run/exp.$EXP nvhp
 alias ch='cp run/tolerance/hashes/* nvhpc_cpu/run/tolerance/hashes/. && cp run/tolerance/hashes/* nvhpc_gpu/run/tolerance/hashes/. && cp run/tolerance/hashes/* nvhpc_cpu_mixed/run/tolerance/hashes/. && cp run/tolerance/hashes/* nvhpc_gpu_mixed/run/tolerance/hashes/.'
 alias re='if [[ "$(basename "$(pwd)")" == "run" ]]; then rm -rf ../experiments; else rm -rf experiments; fi'
 alias st='cd spack-c2sm && echo "spack-c2sm -> $(git describe --tags)" && cd .. && bash -c '\''for file in config/cscs/SPACK_TAG_*; do echo "$file -> $(cat "$file")"; done'\'''
-
-
-
-# General aliases
-alias c="scancel"
-alias sq='squeue -u alauber'
-alias sqw='watch -n 30 squeue -u alauber'
-alias aall="scancel -u alauber"
-alias ls='ls --color'
-alias lsl='ls -ltrh --color'
-alias la='ls -A'
-alias g='grep -i --color'
-alias gr='g -R'
-alias tL='tail -f $(stat --printf "%n/%Y\0" * | sort -rz -t"/" -k 2 | head -z -n 1 | cut -d"/" -z -f 1 )'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias ml='module load'
-alias srcrc='source ~/.bashrc'
-alias gt='git status'
-alias ga='git add'
-alias gco='git commit'
-alias gc='git checkout'
-alias gd='git diff'
-alias gsui='git submodule update --init'
-alias ncd='ncdump -h'
-alias ncw='ncview'
-alias fp='find "$PWD" -name'
-alias ipython='python -m IPython'
-alias lsC='ctags -R'
-alias last='vim "$(stat --printf "%n/%Y\0" * | sort -rz -t"/" -k 2 | head -z -n 1 | cut -d"/" -z -f 1 )" 2>/dev/null'
-alias balfrin='unset LC_CTYPE; ssh balfrin'
