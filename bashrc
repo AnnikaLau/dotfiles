@@ -195,6 +195,7 @@ elif [[ "${BASHRC_HOST}" == "euler" ]]; then
 # levante
 elif [[ "${BASHRC_HOST}" == "levante" ]]; then
     alias sq='squeue -u b381727'
+    alias sqw='watch -n 30 squeue -u b381727'
 fi
 
 # ICON
