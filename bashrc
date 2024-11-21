@@ -178,6 +178,7 @@ elif [[ "${BASHRC_HOST}" == "balfrin" ]]; then
 # balfrin
 elif [[ "${BASHRC_HOST}" == "todi" ]]; then
     alias sc='cd $SCRATCH'
+    export PATH="/users/alauber/miniconda3/bin:$PATH"
 
 # vial
 elif [[ "${BASHRC_HOST}" == "vial" ]]; then
