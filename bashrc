@@ -18,6 +18,8 @@ elif [[ "${HOSTNAME}" == balfrin* ]]; then
     BASHRC_HOST='balfrin'
 elif [[ "${HOSTNAME}" == todi* ]]; then
     BASHRC_HOST='todi'
+elif [[ "${HOSTNAME}" == santis* ]]; then
+    BASHRC_HOST='santis'
 elif [[ "${HOSTNAME}" == ni* ]]; then
     BASHRC_HOST='vial'
 elif [[ "${HOSTNAME}" == dom* ]]; then 
@@ -175,10 +177,14 @@ elif [[ "${BASHRC_HOST}" == "daint" ]]; then
 elif [[ "${BASHRC_HOST}" == "balfrin" ]]; then
     alias sc='cd /scratch/mch/alauber'
 
-# balfrin
+# todi
 elif [[ "${BASHRC_HOST}" == "todi" ]]; then
     alias sc='cd $SCRATCH'
     export PATH="/users/alauber/miniconda3/bin:$PATH"
+
+# santis
+elif [[ "${BASHRC_HOST}" == "santis" ]]; then
+    alias sc='cd $SCRATCH'
 
 # vial
 elif [[ "${BASHRC_HOST}" == "vial" ]]; then
