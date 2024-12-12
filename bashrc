@@ -207,6 +207,7 @@ elif [[ "${BASHRC_HOST}" == "levante" ]]; then
 fi
 
 # ICON
+alias si='spack install'
 alias lsL='ls -ltr LOG*' 
 alias mr='if [[ -z "$EXP" ]]; then echo "EXP not set"; else ./make_runscripts ${EXP} && cd run; fi'
 alias gi='g -R --exclude-dir=nvhpc_cpu --exclude-dir=nvhpc_gpu --exclude-dir=nvhpc_cpu_mixed --exclude-dir=nvhpc_gpu_mixed --exclude-dir=spack-c2sm --exclude-dir=externals'
