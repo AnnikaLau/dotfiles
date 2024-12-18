@@ -184,6 +184,8 @@ elif [[ "${BASHRC_HOST}" == "todi" ]]; then
 
 # santis
 elif [[ "${BASHRC_HOST}" == "santis" ]]; then
+    export PATH="$PATH:/users/alauber/ngc-cli"
+    export PATH="/users/alauber/miniconda3/bin:$PATH"
     alias sc='cd $SCRATCH'
 
 # vial
