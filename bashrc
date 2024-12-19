@@ -111,24 +111,6 @@ elif [[ "${BASHRC_HOST}" == "balfrin" ]]; then
     test -s ~/.profile && . ~/.profile || true
 
 
-# vial
-elif [[ "${BASHRC_HOST}" == "vial" ]]; then
-    # >>> conda initialize >>>
-    # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('/capstor/scratch/cscs/alauber/probtest/miniconda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
-    else
-        if [ -f "/capstor/scratch/cscs/alauber/probtest/miniconda/etc/profile.d/conda.sh" ]; then
-            . "/capstor/scratch/cscs/alauber/probtest/miniconda/etc/profile.d/conda.sh"
-        else
-            export PATH="/capstor/scratch/cscs/alauber/probtest/miniconda/bin:$PATH"
-        fi
-    fi
-    unset __conda_setup
-    # <<< conda initialize <<<
-    echo Mount squashfs!
-
 # dom
 elif [[ "${BASHRC_HOST}" == "dom" ]]; then
     test -s ~/.profile && . ~/.profile || true
@@ -191,7 +173,6 @@ elif [[ "${BASHRC_HOST}" == "santis" ]]; then
 # vial
 elif [[ "${BASHRC_HOST}" == "vial" ]]; then
     alias sc='cd /capstor/scratch/cscs/alauber'
-    alias m='squashfs-mount $SCRATCH/starting_scripts/vial-v1.0.squashfs:/user-environment -- bash'
 
 # dom
 elif [[ "${BASHRC_HOST}" == "dom" ]]; then
