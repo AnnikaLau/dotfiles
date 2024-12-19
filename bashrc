@@ -42,6 +42,12 @@ parse_git_branch() {
 git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
+# Does not work on Mac - run on Ubuntu to set up command prompt
+if [[ ! -z $HOSTNAME ]]; then
+    short_host="${HOSTNAME:0:2}-${HOSTNAME:${#HOSTNAME}-1:${#HOSTNAME}}"
+    export PS1="\u@$short_host:\W\[\033[33m\]\$(parse_git_branch)\[\033[00m\]> "
+fi
+
 # Custom modules/paths/envs for each machine
 
 # local
@@ -82,6 +88,7 @@ elif [[ "${BASHRC_HOST}" == "balfrin" ]]; then
 
 # santis
 elif [[ "${BASHRC_HOST}" == "santis" ]]; then
+    . /etc/bash_completion.d/git.sh
     export PATH="$PATH:/users/alauber/ngc-cli"
     export PATH="/users/alauber/miniconda3/bin:$PATH"
 
