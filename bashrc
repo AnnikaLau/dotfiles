@@ -137,6 +137,10 @@ alias ce='if [[ -z "$EXP" ]]; then echo "EXP not set"; else cp run/exp.$EXP nvhp
 alias ch='cp run/tolerance/hashes/* nvhpc_cpu/run/tolerance/hashes/. && cp run/tolerance/hashes/* nvhpc_gpu/run/tolerance/hashes/. && cp run/tolerance/hashes/* nvhpc_cpu_mixed/run/tolerance/hashes/. && cp run/tolerance/hashes/* nvhpc_gpu_mixed/run/tolerance/hashes/.'
 alias re='if [[ "$(basename "$(pwd)")" == "run" ]]; then rm -rf ../experiments; else rm -rf experiments; fi'
 alias st='cd spack-c2sm && echo "spack-c2sm -> $(git describe --tags)" && cd .. && bash -c '\''for file in config/cscs/SPACK_TAG_*; do echo "$file -> $(cat "$file")"; done'\'''
+alias sbe='sbatch --partition debug --time 00:30:00 ./exp.$EXP.run'
+alias sben='sbatch --partition normal --time 00:30:00 ./exp.$EXP.run'
+alias sbc='sbatch --partition debug --time 00:30:00 ./check.$EXP.run'
+alias sbcn='sbatch --partition normal --time 00:30:00 ./check.$EXP.run'
 
 # Machine specific aliases
 
