@@ -10,14 +10,8 @@
 test -s ~/.alias && . ~/.alias || true
 
 # determine hostname for later use in all dotfiles
-if [[ "${HOSTNAME}" == tsa* ]]; then
-    BASHRC_HOST='tsa'
-elif [[ "${HOSTNAME}" == daint* ]]; then 
-    BASHRC_HOST='daint'
-elif [[ "${HOSTNAME}" == balfrin* ]]; then
+if [[ "${HOSTNAME}" == balfrin* ]]; then
     BASHRC_HOST='balfrin'
-elif [[ "${HOSTNAME}" == todi* ]]; then
-    BASHRC_HOST='todi'
 elif [[ "${HOSTNAME}" == santis* ]]; then
     BASHRC_HOST='santis'
 elif [[ "${HOSTNAME}" == ni* ]]; then
@@ -53,31 +47,6 @@ fi
 # local
 if [[ -z $HOSTNAME ]]; then
     setopt auto_cd
-
-# daint
-elif [[ "${BASHRC_HOST}" == "daint" ]]; then
-    . /etc/bash_completion.d/git.sh
-    export PATH=$PATH:/users/alauber/script_utils
-    test -s ~/.profile && . ~/.profile || true
-    # >>> conda initialize >>>
-    __conda_setup="$('/users/alauber/mambaforge/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
-    else
-        if [ -f "/users/alauber/mambaforge/etc/profile.d/conda.sh" ]; then
-            . "/users/alauber/mambaforge/etc/profile.d/conda.sh"
-        else
-            export PATH="/users/alauber/mambaforge/bin:$PATH"
-        fi
-    fi
-    unset __conda_setup
-
-    if [ -f "/users/alauber/mambaforge/etc/profile.d/mamba.sh" ]; then
-        . "/users/alauber/mambaforge/etc/profile.d/mamba.sh"
-    fi
-    # <<< conda initialize <<<
-    export PROJECT=/project/g110/alauber
-    export CONDA_ENVS_PATH=/project/g110/alauber/envs
 
 # balfrin
 elif [[ "${BASHRC_HOST}" == "balfrin" ]]; then
@@ -127,6 +96,7 @@ alias lsC='ctags -R'
 alias last='vim "$(stat --printf "%n/%Y\0" * | sort -rz -t"/" -k 2 | head -z -n 1 | cut -d"/" -z -f 1 )" 2>/dev/null'
 alias balfrin='unset LC_CTYPE; ssh balfrin'
 alias sc='cd $SCRATCH'
+alias ut='uenv status'
 
 # ICON
 alias si='spack install'
