@@ -59,7 +59,7 @@ elif [[ "${BASHRC_HOST}" == "balfrin" ]]; then
 elif [[ "${BASHRC_HOST}" == "santis" ]]; then
     . /etc/bash_completion.d/git.sh
     export PATH="$PATH:/users/alauber/ngc-cli"
-    export PATH="/users/alauber/miniconda3/bin:$PATH"
+#    export PATH="/users/alauber/miniconda3/bin:$PATH"
 
 # dom
 elif [[ "${BASHRC_HOST}" == "dom" ]]; then
@@ -103,7 +103,7 @@ alias si='spack install'
 alias lsL='ls -ltr LOG*' 
 alias mr='if [[ -z "$EXP" ]]; then echo "EXP not set"; else ./make_runscripts ${EXP} && cd run; fi'
 alias mrs='if [[ -z "$EXP" ]]; then echo "EXP not set"; else ./make_runscripts ${EXP}; fi'
-alias gi='g -R --exclude-dir=cpu_double --exclude-dir=gpu_double --exclude-dir=cpu_mixed --exclude-dir=gpu_mixed --exclude-dir=spack-c2sm --exclude-dir=externals'
+alias gi='g -R --exclude-dir=spack --exclude-dir=cpu_double --exclude-dir=gpu_double --exclude-dir=cpu_mixed --exclude-dir=gpu_mixed --exclude-dir=spack-c2sm --exclude-dir=externals'
 alias ce='if [[ -z "$EXP" ]]; then echo "EXP not set"; else [[ -d cpu_double/run/ ]] && cp run/exp.$EXP cpu_double/run/; [[ -d gpu_double/run/ ]] && cp run/exp.$EXP gpu_double/run/; [[ -d cpu_mixed/run/ ]] && cp run/exp.$EXP cpu_mixed/run/; [[ -d gpu_mixed/run/ ]] && cp run/exp.$EXP gpu_mixed/run/; fi'
 alias ch='[[ -d cpu_double/run/tolerance/hashes/ ]] && cp run/tolerance/hashes/* cpu_double/run/tolerance/hashes/; [[ -d gpu_double/run/tolerance/hashes/ ]] && cp run/tolerance/hashes/* gpu_double/run/tolerance/hashes/; [[ -d cpu_mixed/run/tolerance/hashes/ ]] && cp run/tolerance/hashes/* cpu_mixed/run/tolerance/hashes/; [[ -d gpu_mixed/run/tolerance/hashes/ ]] && cp run/tolerance/hashes/* gpu_mixed/run/tolerance/hashes/'
 alias re='if [[ -z "$EXP" ]]; then echo "EXP not set"; elif [[ "$(basename "$(pwd)")" == "run" ]]; then rm -rf ../experiments/$EXP; else rm -rf experiments/$EXP; fi'
