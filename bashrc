@@ -113,7 +113,7 @@ alias gi='g -R --exclude-dir=spack --exclude-dir=cpu_double --exclude-dir=gpu_do
 alias ce='if [[ -z "$EXP" ]]; then echo "EXP not set"; else [[ -d cpu_double/run/ ]] && cp run/exp.$EXP cpu_double/run/; [[ -d gpu_double/run/ ]] && cp run/exp.$EXP gpu_double/run/; [[ -d cpu_mixed/run/ ]] && cp run/exp.$EXP cpu_mixed/run/; [[ -d gpu_mixed/run/ ]] && cp run/exp.$EXP gpu_mixed/run/; fi'
 alias ch='[[ -d cpu_double/run/tolerance/hashes/ ]] && cp run/tolerance/hashes/* cpu_double/run/tolerance/hashes/; [[ -d gpu_double/run/tolerance/hashes/ ]] && cp run/tolerance/hashes/* gpu_double/run/tolerance/hashes/; [[ -d cpu_mixed/run/tolerance/hashes/ ]] && cp run/tolerance/hashes/* cpu_mixed/run/tolerance/hashes/; [[ -d gpu_mixed/run/tolerance/hashes/ ]] && cp run/tolerance/hashes/* gpu_mixed/run/tolerance/hashes/'
 alias re='if [[ -z "$EXP" ]]; then echo "EXP not set"; elif [[ "$(basename "$(pwd)")" == "run" ]]; then rm -rf ../experiments/$EXP; else rm -rf experiments/$EXP; fi'
-alias st='cd spack-c2sm && echo "spack-c2sm -> $(git describe --tags)" && cd .. && bash -c '\''for file in config/cscs/SPACK_TAG_*; do echo "$file -> $(cat "$file")"; done'\'''
+alias st='cd spack-c2sm && echo "spack-c2sm -> $(git describe --tags)" && cd .. && bash -c '\''for file in config/*/SPACK_TAG_*; do echo "$file -> $(cat "$file")"; done'\'''
 alias sbe='sbatch --partition debug --time 00:30:00 ./exp.$EXP.run'
 alias sben='sbatch --partition normal --time 00:30:00 ./exp.$EXP.run'
 alias sbc='sbatch --partition debug --time 00:30:00 ./check.$EXP.run'
