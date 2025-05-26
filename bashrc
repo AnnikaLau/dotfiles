@@ -69,6 +69,7 @@ fi
 # General aliases
 alias c="scancel"
 alias sq='squeue -u alauber'
+alias squ='squeue --format="%.18i %.9P %.15j %.8u %.8T %.6M %.9l %.3D %R" -u icontest'
 alias sqw='watch -n 30 squeue -u alauber'
 alias aall="scancel -u alauber"
 alias ls='ls --color'
