@@ -122,7 +122,14 @@ else
   done
 fi
 '
-alias ch='[[ -d cpu_double/run/tolerance/hashes/ ]] && cp run/tolerance/hashes/* cpu_double/run/tolerance/hashes/; [[ -d gpu_double/run/tolerance/hashes/ ]] && cp run/tolerance/hashes/* gpu_double/run/tolerance/hashes/; [[ -d cpu_mixed/run/tolerance/hashes/ ]] && cp run/tolerance/hashes/* cpu_mixed/run/tolerance/hashes/; [[ -d gpu_mixed/run/tolerance/hashes/ ]] && cp run/tolerance/hashes/* gpu_mixed/run/tolerance/hashes/'
+alias ch='
+for target in cpu_double gpu_double cpu_mixed gpu_mixed cpu_nvhpc gpu_nvhpc; do
+if [[ -d "$target" ]]; then
+  cp run/tolerance/hashes/* $target/run/tolerance/hashes/.
+  echo "Copied hashes to $target"
+fi
+done
+'
 alias re='if [[ -z "$EXP" ]]; then echo "EXP not set"; elif [[ "$(basename "$(pwd)")" == "run" ]]; then rm -rf ../experiments/$EXP; else rm -rf experiments/$EXP; fi'
 alias st='cd spack-c2sm && echo "spack-c2sm -> $(git describe --tags)" && cd .. && bash -c '\''for file in config/*/SPACK_TAG_*; do echo "$file -> $(cat "$file")"; done'\'''
 alias sbe='sbatch --partition debug --time 00:30:00 ./exp.$EXP.run'
