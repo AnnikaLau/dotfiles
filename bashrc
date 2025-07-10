@@ -60,6 +60,8 @@ elif [[ "${BASHRC_HOST}" == "santis" ]]; then
     . /etc/bash_completion.d/git.sh
     export PATH="$PATH:/users/alauber/ngc-cli"
 #    export PATH="/users/alauber/miniconda3/bin:$PATH"
+    alias ue='export UENV_VERSION=$(cat config/cscs/SANTIS_ENV_TAG 2>/dev/null || cat ../config/cscs/SANTIS_ENV_TAG)'
+    alias sbu='if [ -z "$UENV_VERSION" ]; then echo "UENV_VERSION not set"; elif [ -z "$EXP" ]; then echo "EXP not set"; else sbatch --uenv "$UENV_VERSION" --time 00:10:00 "./exp.$EXP.run"; fi'
 
 # dom
 elif [[ "${BASHRC_HOST}" == "dom" ]]; then
@@ -132,10 +134,10 @@ done
 '
 alias re='if [[ -z "$EXP" ]]; then echo "EXP not set"; elif [[ "$(basename "$(pwd)")" == "run" ]]; then rm -rf ../experiments/$EXP; else rm -rf experiments/$EXP; fi'
 alias st='cd spack-c2sm && echo "spack-c2sm -> $(git describe --tags)" && cd .. && bash -c '\''for file in config/*/SPACK_TAG_*; do echo "$file -> $(cat "$file")"; done'\'''
-alias sbe='sbatch --partition debug --time 00:30:00 ./exp.$EXP.run'
-alias sben='sbatch --partition normal --time 00:30:00 ./exp.$EXP.run'
-alias sbc='sbatch --partition debug --time 00:30:00 ./check.$EXP.run'
-alias sbcn='sbatch --partition normal --time 00:30:00 ./check.$EXP.run'
+alias sbe='sbatch --partition debug --time 00:15:00 ./exp.$EXP.run'
+alias sben='sbatch --partition normal --time 00:15:00 ./exp.$EXP.run'
+alias sbc='sbatch --partition debug --time 00:15:00 ./check.$EXP.run'
+alias sbcn='sbatch --partition normal --time 00:15:00 ./check.$EXP.run'
 
 # Machine specific aliases
 
