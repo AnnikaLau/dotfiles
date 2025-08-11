@@ -60,7 +60,34 @@ elif [[ "${BASHRC_HOST}" == "santis" ]]; then
     . /etc/bash_completion.d/git.sh
     export PATH="$PATH:/users/alauber/ngc-cli"
 #    export PATH="/users/alauber/miniconda3/bin:$PATH"
-    alias ue='export UENV_VERSION=$(cat config/cscs/SANTIS_ENV_TAG 2>/dev/null || cat ../config/cscs/SANTIS_ENV_TAG)'
+    ue() {
+      local suffix="config/cscs/SANTIS_ENV_TAG"
+      local dir
+      for dir in . .. ../..; do
+        local file="$dir/$suffix"
+        if [[ -f "$file" ]]; then
+          export UENV_VERSION=$(<"$file")
+          break
+        fi
+      done
+
+      if [[ -n "$UENV_VERSION" ]]; then
+        echo "UENV_VERSION is $UENV_VERSION"
+      else
+        echo "Warning: UENV_VERSION is empty" >&2
+      fi
+    }
+
+    us() {
+      ue
+      if [[ -n "$UENV_VERSION" ]]; then
+        echo "Start UENV $UENV_VERSION" >&2
+        uenv start "$UENV_VERSION"
+      else
+        echo "Cannot start: UENV_VERSION is not set" >&2
+      fi
+    }
+
     alias sbu='if [ -z "$UENV_VERSION" ]; then echo "UENV_VERSION not set"; elif [ -z "$EXP" ]; then echo "EXP not set"; else sbatch --uenv "$UENV_VERSION" --time 00:10:00 "./exp.$EXP.run"; fi'
 
 # dom
