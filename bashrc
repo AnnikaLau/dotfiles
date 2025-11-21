@@ -88,6 +88,15 @@ elif [[ "${BASHRC_HOST}" == "santis" ]]; then
       fi
     }
 
+    cpub() {
+        ue
+        uenv run ${UENV_VERSION} -- ./../config/cscs/santis.cpu.nvhpc
+    }
+    gpub() {
+        ue
+        uenv run ${UENV_VERSION} -- ./../config/cscs/santis.gpu.nvhpc
+    }
+
     alias sbu='if [ -z "$UENV_VERSION" ]; then echo "UENV_VERSION not set"; elif [ -z "$EXP" ]; then echo "EXP not set"; else sbatch --uenv "$UENV_VERSION" --time 00:10:00 "./exp.$EXP.run"; fi'
 
 # dom
