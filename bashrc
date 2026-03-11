@@ -57,9 +57,7 @@ elif [[ "${BASHRC_HOST}" == "balfrin" ]]; then
 
 # santis
 elif [[ "${BASHRC_HOST}" == "santis" ]]; then
-    . /etc/bash_completion.d/git.sh
     export PATH="$PATH:/users/alauber/ngc-cli"
-#    export PATH="/users/alauber/miniconda3/bin:$PATH"
     ue() {
       local suffix="config/cscs/SANTIS_ENV_TAG"
       local dir
