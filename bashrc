@@ -58,6 +58,7 @@ elif [[ "${BASHRC_HOST}" == "balfrin" ]]; then
 # santis
 elif [[ "${BASHRC_HOST}" == "santis" ]]; then
     export PATH="$PATH:/users/alauber/ngc-cli"
+    export PATH=$HOME/.local/bin:$PATH
     ue() {
       local suffix="config/cscs/SANTIS_ENV_TAG"
       local dir
@@ -96,7 +97,7 @@ elif [[ "${BASHRC_HOST}" == "santis" ]]; then
     }
 
     alias sbu='if [ -z "$UENV_VERSION" ]; then echo "UENV_VERSION not set"; elif [ -z "$EXP" ]; then echo "EXP not set"; else sbatch --uenv "$UENV_VERSION" --time 00:10:00 "./exp.$EXP.run"; fi'
-    alias urc='if [ -z "$UENV_VERSION" ]; then echo "UENV_VERSION not set"; elif [ -z "$EXP" ]; then echo "EXP not set"; else uenv run ${UENV_VERSION},/capstor/store/cscs/userlab/cws01/ci/ci-python-image/py_icon_ci.squashfs:$(pwd)/.venv --view modules,default -- bash -c "source $(pwd)/.venv/bin/activate && module load nvhpc cdo && ./exp.$EXP.run"; fi'
+    alias urc='if [ -z "$UENV_VERSION" ]; then echo "UENV_VERSION not set"; elif [ -z "$EXP" ]; then echo "EXP not set"; else uenv run ${UENV_VERSION},/capstor/store/cscs/userlab/cws01/ci/ci-python-image/py_icon_ci.squashfs:$(pwd)/.venv --view modules,default -- bash -c "source $(pwd)/.venv/bin/activate && ./exp.$EXP.run"; fi'
 
 # dom
 elif [[ "${BASHRC_HOST}" == "dom" ]]; then
