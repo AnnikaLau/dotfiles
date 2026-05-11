@@ -47,6 +47,7 @@ fi
 # local
 if [[ -z $HOSTNAME ]]; then
     setopt auto_cd
+    export PATH=$PATH:/Users/alauber/.local/bin
 
 # balfrin
 elif [[ "${BASHRC_HOST}" == "balfrin" ]]; then
